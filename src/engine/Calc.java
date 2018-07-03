@@ -18,7 +18,6 @@ public class Calc {
 		
 		// Scan the operation
 		String operation = scan();
-		
 		// Split the three different parts of the calculation through RegEx
 		firstValue = setFirstValue(operand1, operation);
 		sign = setBinaryOperation(sign, operation);
@@ -26,23 +25,6 @@ public class Calc {
 		// Do the operation
 		result = calculationProcess(sign, result, firstValue, secondValue);
 		
-		// Continue or not
-		String continueResetQuit = scan();
-		if ( continueResetQuit == "q") {
-			System.exit(0);
-		} else if (continueResetQuit == "r"){
-			operation = scan();
-			firstValue = setFirstValue(operand1, operation);
-			sign = setBinaryOperation(sign, operation);
-			secondValue = setSecondValue(operand2, operation);
-			result = calculationProcess(sign, result, firstValue, secondValue);
-		} else if ( continueResetQuit == "c"){
-			operation = scan();
-			firstValue = result;
-			sign = setBinaryOperation(sign, operation);
-			secondValue = setSecondValue(operand2, operation);
-			result = calculationProcess(sign, result, firstValue, secondValue);
-		}
 	}
 
 	private static double calculationProcess(String sign, double result, double firstValue, double secondValue) {
@@ -113,6 +95,7 @@ public class Calc {
 		Scanner sc =  new Scanner(System.in);
 		// Prompt the operation and close Scanner
 		String operation = sc.nextLine();
+		sc.close();
 		// Remove whitespace
 		operation.replaceAll("\\s", "");
 		return operation;
